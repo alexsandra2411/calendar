@@ -13,9 +13,11 @@ import java.util.Optional;
 @Service
 public class CalendarEntryServiceImpl implements CalendarEntryService {
 
-
-    @Autowired
     public CalendarEntryDao calendarEntryDao;
+
+    public CalendarEntryServiceImpl(CalendarEntryDao calendarEntryDao) {
+        this.calendarEntryDao = calendarEntryDao;
+    }
 
     @Override
     public Optional<CalendarEntry> findCalendarEntryById(Long id) {
@@ -30,9 +32,5 @@ public class CalendarEntryServiceImpl implements CalendarEntryService {
     @Override
     public List<CalendarEntry> findCalendarEntriesBetweenDates(Date startDate, Date endDate) {
         return calendarEntryDao.findCalendarEntriesBetweenDates(startDate, endDate);
-    }
-    @Override
-    public void addCalendarService(CalendarEntry ce) {
-        calendarEntryDao.insertCalendarEntity(ce);
     }
 }

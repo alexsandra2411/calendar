@@ -14,6 +14,4 @@ public interface CalendarEntryService {
     List<CalendarEntry> findCalendarEntriesByDate(Date date);
 
     List<CalendarEntry> findCalendarEntriesBetweenDates(Date startDate, Date endDate);
-
-    void addCalendarService(CalendarEntry ce);
 }

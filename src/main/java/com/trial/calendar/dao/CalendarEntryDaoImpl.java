@@ -21,12 +21,8 @@ public class CalendarEntryDaoImpl extends AbstractDao implements CalendarEntryDa
     public static final String FIND_CALENDAR_ENTRY_BY_DATE = "SELECT * FROM CALENDAR_ENTRY  where date = ?";
     public static final String FIND_CALENDAR_ENTRY_BY_DATE_INTERVAL = "SELECT * FROM CALENDAR_ENTRY  where date BETWEEN ? AND ?";
     public static final String INSERT_CALENDAR_ENTRY = "INSERT INTO calendar_entry(id, description, date) VALUES  (?,?,?)";
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
-    public void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+    private JdbcTemplate jdbcTemplate;
 
     public CalendarEntryDaoImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -52,10 +48,5 @@ public class CalendarEntryDaoImpl extends AbstractDao implements CalendarEntryDa
         return calendarEntries;
     }
 
-    @Override
-    public void insertCalendarEntity(CalendarEntry calendarEntry) {
-        jdbcTemplate.update(INSERT_CALENDAR_ENTRY, new Object[]{calendarEntry.getId(), calendarEntry.getDescription(),
-                calendarEntry.getDate()});
-    }
 }
 

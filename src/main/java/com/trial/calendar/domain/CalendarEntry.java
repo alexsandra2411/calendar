@@ -3,17 +3,11 @@ package com.trial.calendar.domain;
 import java.sql.Date;
 
 public class CalendarEntry {
-    @Override
-    public String toString() {
-        return "CalendarEntry{" +
-                "id=" + id +
-                ", date=" + date +
-                ", description='" + description + '\'' +
-                '}';
-    }
 
     private Long id;
+
     private Date date;
+
     private String description;
 
     public Long getId() {
@@ -39,4 +33,14 @@ public class CalendarEntry {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "CalendarEntry{" +
+                "id=" + id +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
 }

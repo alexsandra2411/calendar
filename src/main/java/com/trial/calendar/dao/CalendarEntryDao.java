@@ -14,6 +14,4 @@ public interface CalendarEntryDao {
     List<CalendarEntry> findCalendarEntriesByDate(Date date);
 
     List<CalendarEntry> findCalendarEntriesBetweenDates(Date startDate, Date endDate);
-
-    void insertCalendarEntity(CalendarEntry calendarEntry);
 }
