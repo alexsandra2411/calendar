@@ -20,7 +20,6 @@ public class CalendarEntryDaoImpl extends AbstractDao implements CalendarEntryDa
     public static final String FIND_CALENDAR_ENTRY_BY_ID = "SELECT * FROM CALENDAR_ENTRY  where id = ?";
     public static final String FIND_CALENDAR_ENTRY_BY_DATE = "SELECT * FROM CALENDAR_ENTRY  where date = ?";
     public static final String FIND_CALENDAR_ENTRY_BY_DATE_INTERVAL = "SELECT * FROM CALENDAR_ENTRY  where date BETWEEN ? AND ?";
-    public static final String INSERT_CALENDAR_ENTRY = "INSERT INTO calendar_entry(id, description, date) VALUES  (?,?,?)";
 
     private JdbcTemplate jdbcTemplate;
 

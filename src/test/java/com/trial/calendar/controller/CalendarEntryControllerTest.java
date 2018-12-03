@@ -1,6 +1,7 @@
 package com.trial.calendar.controller;
 
 import com.trial.calendar.CalendarApplication;
+import com.trial.calendar.utils.TestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import javax.sql.DataSource;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -56,32 +55,28 @@ public class CalendarEntryControllerTest {
 
     @Test
     public void checkFindCalendarEntryByExistingDate() throws Exception {
-        Date date = getDateFromString("2012-01-12");
+        Date date = TestUtils.getDateFromString("2012-01-12");
         mockMvc.perform(get("/calendar-entries/by-date/" + date)).andExpect(status().isOk());
     }
 
     @Test
     public void checkFindCalendarEntryByExistingDates() throws Exception {
-        Date startDate = getDateFromString("2012-01-12");
-        Date endDate = getDateFromString("2018-01-12");
+        Date startDate = TestUtils.getDateFromString("2012-01-12");
+        Date endDate = TestUtils.getDateFromString("2018-01-12");
         mockMvc.perform(get("/calendar-entries/by-dates/" + startDate + "/" + endDate)).andExpect(status().isOk());
-    }
-
-    private Date getDateFromString(String dateValue) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy-mm-dd").parse(dateValue);
-        return new java.sql.Date(date.getTime());
     }
 
     @Test
     public void checkFindCalendarEntryByNotExistingDates() throws Exception {
-        Date startDate = getDateFromString("2006-01-12");
-        Date endDate = getDateFromString("2008-01-12");
+        Date startDate = TestUtils.getDateFromString("2006-01-12");
+        Date endDate = TestUtils.getDateFromString("2008-01-12");
         mockMvc.perform(get("/calendar-entries/by-dates/" + startDate + "/" + endDate)).andExpect(status().isNotFound());
     }
 
     @Test
     public void checkGetCalendarEntryByNotExistingDate() throws Exception {
-        Date date = getDateFromString("2001-01-12");
+        Date date = TestUtils.getDateFromString("2001-01-12");
         mockMvc.perform(get("/calendar-entries/by-date/" + date)).andExpect(status().isNotFound());
     }
+
 }

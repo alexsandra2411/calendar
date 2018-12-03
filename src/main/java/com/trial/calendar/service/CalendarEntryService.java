@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public interface CalendarEntryService {
 
-
     Optional<CalendarEntry> findCalendarEntryById(Long id);
 
     List<CalendarEntry> findCalendarEntriesByDate(Date date);

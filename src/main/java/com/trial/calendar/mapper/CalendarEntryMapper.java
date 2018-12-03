@@ -13,7 +13,7 @@ public class CalendarEntryMapper implements RowMapper<CalendarEntry> {
 
     @Override
     public CalendarEntry mapRow(ResultSet rs, int rowNum) throws SQLException {
-        if (rs.getRow()>0) {
+        if (rs.getRow() > 0) {
             CalendarEntry calendarEntry = new CalendarEntry();
             calendarEntry.setId(rs.getLong("id"));
             Date date = rs.getDate("date");
